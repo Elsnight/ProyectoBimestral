@@ -64,9 +64,9 @@ export class HomePage {
   ]
 
   ngOnInit() {
-    console.log("hola soi ngOninit");
-    this.getResultados();
-    this.getIglesia();
+    // console.log("hola soi ngOninit");
+    // this.getResultados();
+    // this.getIglesia();
   }
 
   getResultados() {
