@@ -21,11 +21,12 @@
   </ion-item>
 
 
-  <ion-item *ngIf=" login == false" detail="true">
+  <ion-item *ngIf=" login == false" detail="true" [routerLink]="['/login']">
     <ion-label>
       Login
     </ion-label>
-    <ion-icon slot="start" name="apps"></ion-icon>
+    <ion-icon slot=" start" name="apps">
+    </ion-icon>
   </ion-item>
 
   <ion-item *ngIf=" login == false" detail="true">
@@ -35,13 +36,15 @@
     <ion-icon slot="start" name="apps"></ion-icon>
   </ion-item>
 
+  <ion-menu-toggle>
+    <ion-item detail="true" (click)="logout()">
+      <ion-label>
+        Logout
+      </ion-label>
+      <ion-icon slot="start" name="apps"></ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
 
-  <ion-item *ngIf=" login == false" detail="true">
-    <ion-label>
-      Logout
-    </ion-label>
-    <ion-icon slot="start" name="apps"></ion-icon>
-  </ion-item>
 
 
 </ion-list>
