@@ -15,9 +15,10 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SettingComponent } from './backend/setting/setting.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, SettingComponent],
+  declarations: [AppComponent, SettingComponent, MenuComponent],
   imports: [BrowserModule, FormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
