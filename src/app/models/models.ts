@@ -30,5 +30,18 @@ export interface Resultado {
         goles: number
     }
     arbitro?: string;
-    id: string
+    id?: string
+}
+
+export interface ResultadoI {
+    equipo1: {
+        nombre: string;
+        goles: number
+    }
+    equipo2: {
+        nombre: string;
+        goles: number
+    }
+    arbitro?: string;
+    id?: string
 }

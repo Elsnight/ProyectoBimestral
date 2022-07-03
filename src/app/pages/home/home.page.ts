@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Estudiante } from '../../models/models';
+import { ConfirmService } from 'src/app/services/confirm.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { Estudiante, Resultado, ResultadoI } from '../../models/models';
 
 @Component({
   selector: 'app-home',
@@ -20,13 +22,18 @@ export class HomePage {
   trackItems(index: number, itemObject: any) {
     return itemObject.id;
   }
-  constructor() { }
 
-  resultado: number = 0;
+  resultados: Resultado[] = [];
+  iglesias: ResultadoI[] = [];
+
+
+  constructor(private database: FirestoreService, private interaction: ConfirmService) { }
+
+  //resultado: number = 0;
   mensaje: string = "hola eduardp como estas ";
   enable: boolean = false;
 
-  resultados: number[] = [0, 9, 6]
+  // resultados: number[] = [0, 9, 6]
 
   //variablede objeto
   julio: Estudiante = {
@@ -58,11 +65,28 @@ export class HomePage {
 
   ngOnInit() {
     console.log("hola soi ngOninit");
-
+    this.getResultados();
+    this.getIglesia();
   }
 
   getResultados() {
-    console.log('estos son los resultados ->', this.estudiantes);
+    this.database.getCollection<ResultadoI>('Resultados').subscribe(res => {
+      console.log('esta es la lectura', res);
+      this.resultados = res;
 
+    });
+    // this.database.getCollection<ResultadoI>('Iglesias').subscribe(res1 => {
+    //   console.log('esta es la lectura', res1);
+    //   this.resultados = res1;
+
+    // })
+  }
+
+  getIglesia() {
+    this.database.getCollection<ResultadoI>('Iglesias').subscribe(res1 => {
+      console.log('esta es la lectura', res1);
+      this.iglesias = res1;
+
+    })
   }
 }

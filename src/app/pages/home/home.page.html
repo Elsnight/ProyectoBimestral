@@ -20,6 +20,23 @@
     <ion-item *ngFor="let estudiante of estudiantes; trackBy:trackItems">
       <ion-label>{{ estudiante.nombre }}</ion-label>
     </ion-item>
+    <ion-item *ngFor="let resultado of resultados; trackBy:trackItems">
+      <ion-label>{{ resultado.equipo1.nombre }}</ion-label>
+      <ion-label>{{ resultado.equipo1.goles }}</ion-label>
+
+      <h1>{{resultado.equipo2.nombre}}</h1>
+      <h1>{{resultado.equipo2.goles}}</h1>
+
+    </ion-item>
+
+    <ion-item *ngFor="let iglesia of iglesias; trackBy:trackItems">
+      <ion-label>{{ iglesia.equipo1.nombre }}</ion-label>
+      <ion-label>{{ iglesia.equipo1.goles }}</ion-label>
+
+      <h1>{{iglesia.equipo2.nombre}}</h1>
+      <h1>{{iglesia.equipo2.goles}}</h1>
+
+    </ion-item>
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer"
         href="https://ionicframework.com/docs/components">UI Components</a></p>

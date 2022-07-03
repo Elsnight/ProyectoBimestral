@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  firebase: {
+  firebaseConfig: {
     projectId: 'soccer-dfd62',
     appId: '1:883877846641:web:ef13bb86cd542d36aec5d0',
     storageBucket: 'soccer-dfd62.appspot.com',
@@ -13,14 +13,6 @@ export const environment = {
     messagingSenderId: '883877846641',
   },
   production: false,
-  firebaseConfig: {
-    apiKey: "AIzaSyBNpDsIW_OcXkHakyDk6JL4NxhXjeNbEbY",
-    authDomain: "soccer-dfd62.firebaseapp.com",
-    projectId: "soccer-dfd62",
-    storageBucket: "soccer-dfd62.appspot.com",
-    messagingSenderId: "883877846641",
-    appId: "1:883877846641:web:ef13bb86cd542d36aec5d0"
-  }
 };
 
 /*

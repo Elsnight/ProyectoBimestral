@@ -10,21 +10,21 @@
   <ion-card>
     <ion-item>
       <ion-label> Equipo 1</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="data.equipo1.nombre"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> goles 1</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="data.equipo1.goles"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label> Equipo 2</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="data.equipo2.nombre"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label> goles 2</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="data.equipo2.goles"></ion-input>
     </ion-item>
   </ion-card>
   <ion-button (click)="  crearNuevoResultado()">
