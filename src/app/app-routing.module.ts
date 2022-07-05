@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SettingComponent } from './backend/setting/setting.component';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { canActivate } from '@angular/fire/compat/auth-guard';
+
+
+const uidAdmin = 'zZkiW5uprsNPnRvCJ4jBgxrVwx33';
+const onlyAdmin = () => map((user: any) => !!user && (user.uid === uidAdmin));
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
-  { path: 'ajustes', component: SettingComponent },
+  { path: 'ajustes', component: SettingComponent, ...canActivate(onlyAdmin) },
 
   {
     path: '',
@@ -25,6 +33,11 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroPageModule)
+  },
+  {
+    path: 'perfil',
+    canActivate: [AngularFireAuthGuard],
+    loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule)
   },
 ];
 

@@ -22,10 +22,22 @@ export class SettingComponent implements OnInit {
     arbitro: 'jorge perez',
     id: '',
   }
+
+  ajustes: any[] = [];
   constructor(private database: FirestoreService, private interaction: ConfirmService) { }
 
   ngOnInit() {
     console.log('hola estamos en ajustes');
+
+  }
+
+  leerAjustesSecretos() {
+    const path = "Ajustes";
+    this.database.getCollection(path).subscribe((res) => {
+      console.log('leerAjustesSecretos ->', res);
+      this.ajustes = res;
+
+    })
 
   }
 

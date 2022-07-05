@@ -25,12 +25,10 @@ export class ConfirmService {
     this.loading = await this.loadingCtrl.create({
       message: mensaje,
     });
-
     this.loading.present();
   }
 
   async closeLoading() {
-
     await this.loading.dismiss();
   }
 

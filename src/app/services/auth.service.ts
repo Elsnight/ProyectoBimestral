@@ -27,4 +27,15 @@ export class AuthService {
     return this.autenticacion.authState
   }
 
+  //obtener ID
+  async getUid() {
+    const user = await this.autenticacion.currentUser;
+    if (user) {
+      return user.uid
+
+    } else {
+      return null;
+    }
+  }
+
 }
