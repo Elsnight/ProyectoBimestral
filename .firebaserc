@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "soccer-dfd62": {
+      "hosting": {
+        "app": [
+          "soccer-dfd62"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "soccer-dfd62"
+  }
+}
