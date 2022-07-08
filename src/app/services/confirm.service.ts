@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { async } from '@firebase/util';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfirmService {
   loading: any;
+  handlerMessage = '';
+  roleMessage = '';
 
 
   constructor(
     public toastController: ToastController,
-    private loadingCtrl: LoadingController) { }
+    private loadingCtrl: LoadingController,
+    private alertController: AlertController) { }
 
 
   async presentToast(mensaje: string) {
@@ -30,6 +34,35 @@ export class ConfirmService {
 
   async closeLoading() {
     await this.loading.dismiss();
+  }
+
+
+  async presentAlert(texto: string, subtitulo: string) {
+
+    let aceptar = false;
+
+    const alert = await this.alertController.create({
+      header: texto,
+      subHeader: subtitulo,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => { this.handlerMessage = 'Alert canceled'; }
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => { aceptar = true, this.handlerMessage = 'Alert confirmed'; }
+        }
+      ]
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    this.roleMessage = `Dismissed with role: ${role}`;
+    return aceptar
   }
 
 

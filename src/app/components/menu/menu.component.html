@@ -7,13 +7,21 @@
   </ion-list-header>
 
   <ion-menu-toggle *ngIf="rol ==='admin'">
+    <ion-item detail="true" [routerLink]="['/set_productos']">
+      <ion-label>
+        Agregar productos
+      </ion-label>
+      <ion-icon slot="start" name="settings-outline"></ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+  <ion-menu-toggle *ngIf="rol ==='admin'">
     <ion-item detail="true" [routerLink]="['/ajustes']">
       <ion-label>
         Ajustes
       </ion-label>
       <ion-icon slot="start" name="home"></ion-icon>
     </ion-item>
-
   </ion-menu-toggle>
 
   <ion-item detail="true" [routerLink]="['/home']">

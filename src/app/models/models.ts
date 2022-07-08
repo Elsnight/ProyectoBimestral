@@ -54,3 +54,12 @@ export interface User {
     password: string,
     perfil: 'visitante' | 'admin'
 }
+
+export interface equipoI {
+    nombre: string;
+    pais: 'españa' | 'francia' | 'italia';
+    posicion: string;
+    id: string
+}
+
+export const Paises = ['españa', 'francia', 'italia']

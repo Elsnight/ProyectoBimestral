@@ -5,6 +5,7 @@ import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { canActivate } from '@angular/fire/compat/auth-guard';
+import { ProductosComponent } from './backend/productos/productos.component';
 
 
 const uidAdmin = 'zZkiW5uprsNPnRvCJ4jBgxrVwx33';
@@ -16,6 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   { path: 'ajustes', component: SettingComponent, ...canActivate(onlyAdmin) },
+  { path: 'set_productos', component: ProductosComponent, ...canActivate(onlyAdmin) },
 
   {
     path: '',

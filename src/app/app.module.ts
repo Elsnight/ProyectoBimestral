@@ -16,9 +16,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SettingComponent } from './backend/setting/setting.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ProductosComponent } from './backend/productos/productos.component';
 
 @NgModule({
-  declarations: [AppComponent, SettingComponent, MenuComponent],
+  declarations: [AppComponent, SettingComponent, MenuComponent, ProductosComponent],
   imports: [BrowserModule, FormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,

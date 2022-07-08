@@ -49,4 +49,10 @@ export class FirestoreService {
     const collection = this.firestore.collection(path);
     return collection.doc(id).update(data);
   }
+
+  //eliminar
+  deleteDoc(path: string, id: string) {
+    return this.firestore.collection(path).doc(id).delete();
+
+  }
 }
