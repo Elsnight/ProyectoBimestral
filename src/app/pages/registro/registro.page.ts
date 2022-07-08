@@ -15,12 +15,16 @@ export class RegistroPage implements OnInit {
 
   datos: User = {
     nombre: null,
-    edad: null,
+    apellido: null,
     correo: null,
-    uid: null,
+    edad: null,
     password: null,
-    perfil: 'admin'
+    ci: null,
+    uid: null,
+    perfil: 'visitante',
+    genero: 'Otro'
   }
+
   constructor(
     private auth: AuthService,
     private firestore: FirestoreService,
@@ -50,7 +54,9 @@ export class RegistroPage implements OnInit {
       this.datos.password = null, //eliminar contraseña
         await this.firestore.createDoc(this.datos, path, id);
       this.interaction.presentToast('Registrado con exito');
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
+      this.interaction.closeLoading();
+
     }
 
   }

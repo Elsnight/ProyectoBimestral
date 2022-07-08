@@ -48,11 +48,14 @@ export interface ResultadoI {
 
 export interface User {
     nombre: string,
-    edad: number,
+    apellido: string,
     correo: string,
-    uid: string,
+    edad: number,
     password: string,
+    ci: number,
+    uid: string,
     perfil: 'visitante' | 'admin'
+    genero: 'Masculino' | 'Femenino' | 'Otro'
 }
 
 export interface equipoI {
