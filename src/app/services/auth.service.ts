@@ -27,7 +27,8 @@ export class AuthService {
     return this.autenticacion.authState
   }
 
-  //obtener ID
+  //obtener IDgit checkout -b otrarama
+
   async getUid() {
     const user = await this.autenticacion.currentUser;
     if (user) {
