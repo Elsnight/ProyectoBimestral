@@ -1,0 +1,74 @@
+<ion-list>
+
+  <ion-list-header>
+    <strong>Menú</strong>
+  </ion-list-header>
+
+  <ion-menu-toggle *ngIf="rol ==='admin'">
+    <ion-item detail="true" [routerLink]="['/set_productos']">
+      <ion-label>
+        Agregar productos
+      </ion-label>
+      <ion-icon slot="start" name="settings-outline"></ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+  <ion-menu-toggle *ngIf="rol ==='admin'">
+    <ion-item detail="true" [routerLink]="['/ajustes']">
+      <ion-label>
+        Ajustes
+      </ion-label>
+      <ion-icon slot="start" name="home"></ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+  <ion-item *ngIf=" login" detail="true" [routerLink]="['/home']">
+    <ion-label>
+      Resultados
+    </ion-label>
+    <ion-icon slot="start" name="apps"></ion-icon>
+  </ion-item>
+
+  <ion-menu-toggle *ngIf=" login == false">
+    <ion-item detail="true" [routerLink]="['/login']">
+      <ion-label>
+        Login
+      </ion-label>
+      <ion-icon slot=" start" name="apps">
+      </ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+  <ion-menu-toggle *ngIf=" login == false">
+    <ion-item detail="true" [routerLink]="['/register']">
+      <ion-label>
+        Registrarse
+      </ion-label>
+      <ion-icon slot=" start" name="apps">
+      </ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+  <ion-menu-toggle *ngIf="login && rol =='visitante'">
+    <ion-item detail="true" [routerLink]="['/perfil']">
+      <ion-label>
+        Perfil
+      </ion-label>
+      <ion-icon slot=" start" name="apps">
+      </ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+
+  <ion-menu-toggle *ngIf=" login">
+    <ion-item detail="true" (click)="logout()">
+      <ion-label>
+        Logout
+      </ion-label>
+      <ion-icon slot="start" name="apps"></ion-icon>
+    </ion-item>
+  </ion-menu-toggle>
+
+
+
+</ion-list>

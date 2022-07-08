@@ -23,10 +23,18 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin),
   },
   {
+    path: 'register',
+    loadChildren: () =>
+      import('./pages/register/register.module').then(m => m.RegisterPageModule),
+    ...canActivate(redirectLoggedInToHome),
+
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
   },
+
 ];
 
 @NgModule({
