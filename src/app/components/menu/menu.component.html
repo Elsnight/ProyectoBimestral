@@ -24,7 +24,7 @@
     </ion-item>
   </ion-menu-toggle>
 
-  <ion-item detail="true" [routerLink]="['/home']">
+  <ion-item *ngIf=" login" detail="true" [routerLink]="['/home']">
     <ion-label>
       Resultados
     </ion-label>
