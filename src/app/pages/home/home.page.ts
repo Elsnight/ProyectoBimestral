@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { GooglemapsComponent } from 'src/app/components/googlemaps/googlemaps.component';
 import { ConfirmService } from 'src/app/services/confirm.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { Estudiante, Resultado, ResultadoI } from '../../models/models';
+import { cliente, Estudiante, Resultado, ResultadoI } from '../../models/models';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,6 @@ import { Estudiante, Resultado, ResultadoI } from '../../models/models';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-
-
 
   items = [
     { id: 0, value: 'Item 0' },
@@ -23,11 +22,21 @@ export class HomePage {
     return itemObject.id;
   }
 
+  cliente: cliente = {
+    uid: '',
+    email: '',
+    celular: '',
+    foto: '',
+    referencia: '',
+    nombre: '',
+    ubicacion: null,
+  };
+
   resultados: Resultado[] = [];
   iglesias: ResultadoI[] = [];
 
 
-  constructor(private database: FirestoreService, private interaction: ConfirmService) { }
+  constructor(private modalController: ModalController, private database: FirestoreService, private interaction: ConfirmService) { }
 
   //resultado: number = 0;
   mensaje: string = "hola eduardp como estas ";
@@ -88,5 +97,38 @@ export class HomePage {
       this.iglesias = res1;
 
     })
+  }
+
+  addSitioTuristico() {
+    console.log('agregar citio turistico');
+
+  }
+
+  async addDirection() {
+
+    const ubicacion = this.cliente.ubicacion;
+    let positionInput = {
+      lat: -2.898116,
+      lng: -78.99958149999999
+    };
+    if (ubicacion !== null) {
+      positionInput = ubicacion;
+    }
+
+    const modalAdd = await this.modalController.create({
+      component: GooglemapsComponent,
+      mode: 'ios',
+      swipeToClose: true,//cerrar cuando bajemos
+      componentProps: { position: positionInput }
+    });
+    await modalAdd.present();
+
+    const { data } = await modalAdd.onWillDismiss();
+    if (data) {
+      console.log('data -> ', data);
+      this.cliente.ubicacion = data.pos;
+      console.log('this.cliente -> ', this.cliente);
+    }
+
   }
 }

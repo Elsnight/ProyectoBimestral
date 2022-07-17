@@ -9,12 +9,39 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding" id="container">
 
   <ion-list *ngIf="info">
 
+    <!-- <div class="preview">
+      <ion-avatar (click)="changeImage()">
+        <img *ngIf="profile?.imageUrl; else placheolder_avatar;" [src]="profile.imageUrl" />
+        <ng-template #placheolder_avatar>
+          <div class="fallback">
+            <p>Select avatar</p>
+          </div>
+        </ng-template>
+      </ion-avatar>
+    </div> -->
+    <strong>Información General</strong>
+    <p>Estos son todos los datos generales de tu cuenta.</p>
+
     <ion-item>
-      <ion-label>
+      <ion-label>Nombre:
+        {{info.nombre}}
+      </ion-label>
+      <ion-icon (click)="editarAtributo('nombre')" slot="end" name="create"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido:
+        {{info.apellido}}
+      </ion-label>
+      <ion-icon (click)="editarAtributo('apellido')" slot="end" name="create"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Correo:
         {{info.correo}}
       </ion-label>
       <ion-icon (click)="editarAtributo('correo')" slot="end" name="create"></ion-icon>
@@ -22,27 +49,31 @@
 
 
     <ion-item>
-      <ion-label>
-        {{info.nombre}}
-      </ion-label>
-      <ion-icon (click)="editarAtributo('nombre')" slot="end" name="create"></ion-icon>
-
-    </ion-item>
-
-    <ion-item>
-      <ion-label>
+      <ion-label>Edad :
         {{info.edad}}
       </ion-label>
       <ion-icon (click)="editarAtributo('edad')" slot="end" name="create"></ion-icon>
     </ion-item>
 
+    <ion-item>
+      <ion-label> Número de documento:
+        {{info.ci}}
+      </ion-label>
+      <ion-icon (click)="editarAtributo('edad')" slot="end" name="create"></ion-icon>
+    </ion-item>
 
     <ion-item>
-      <ion-label>
+      <ion-label>Perfil:
         {{info.perfil}}
       </ion-label>
       <ion-icon slot="end" name="create"></ion-icon>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>Genero:
+        {{info.genero}}
+      </ion-label>
+      <ion-icon slot="end" name="create"></ion-icon>
     </ion-item>
 
   </ion-list>

@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  ApiKeyGoogleMaps: 'AIzaSyDE6cux2BGVwX4OwuSOrDs76HmFfuRqLvU',
   firebaseConfig: {
     projectId: 'soccer-dfd62',
     appId: '1:883877846641:web:ef13bb86cd542d36aec5d0',
