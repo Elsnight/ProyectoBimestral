@@ -48,7 +48,6 @@ export class ProductosComponent implements OnInit {
   }
 
   async eliminar(equipo: equipoI) {
-
     const res = await this.interaction.presentAlert('alerta', 'seguro que deseas eliminar?');
     console.log('res ->', res);
     if (res) {
@@ -56,11 +55,7 @@ export class ProductosComponent implements OnInit {
 
       await this.database.deleteDoc(path, equipo.id)
       this.interaction.presentToast('Eliminado con exito');
-
     }
-
-
-
   }
 
   async guardar() {

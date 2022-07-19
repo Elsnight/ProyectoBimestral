@@ -65,6 +65,18 @@ export interface equipoI {
     id: string
 }
 
+export interface SitiosTuristicos {
+    nombre: string;
+    pais: 'españa' | 'francia' | 'italia';
+    posicion: string;
+    ubicacion: {
+        lat: number;
+        lng: number;
+    };
+    id: string;
+}
+
+
 export interface cliente {
     uid: string;
     email: string;
@@ -79,3 +91,4 @@ export interface cliente {
 }
 
 export const Paises = ['españa', 'francia', 'italia']
+export const TipoDeSitios = ['Parque', 'Iglesia', 'Restaurante', 'Museo', 'Otro']
