@@ -13,13 +13,12 @@
   <ion-grid>
     <ion-row class="ion-justify-content-end">
       <ion-col size="5">
-        <ion-button (click)="addNew()">
-          Añadir nuevo
+        <ion-button (click)="addNew()" id="open-modal" expand="block"> Añadir nuevo
         </ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <!-- <ion-row>
       <ion-col *ngIf="newEquipo">
         <ion-item>
           <ion-label position="floating">
@@ -61,7 +60,7 @@
         </ion-button>
       </ion-col>
 
-    </ion-row>
+    </ion-row> -->
 
     <ion-row *ngFor="let equipo of equipos">
       <ion-col>
@@ -110,6 +109,64 @@
 
 
   </ion-grid>
+  <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-row>
+          <ion-col *ngIf="newEquipo">
+            <ion-item>
+              <ion-label position="floating">
+                Nombre:
+              </ion-label>
+              <ion-input [(ngModel)]="newEquipo.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">
+                Detalles:
+              </ion-label>
+              <ion-input [(ngModel)]="newEquipo.posicion"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Tipo de sitio:</ion-label>
+              <ion-select [(ngModel)]="newEquipo.pais" value="brown" placeholder="Tipo de sitio">
+                <ion-select-option *ngFor="let sitio of sitios" [value]="pais">{{sitio}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item (click)="addDirection()">
+              <ion-label class="floating">
+                Ubicación
+              </ion-label>
+              <ion-buttons slot="end">
+                <ion-button>
+                  <ion-icon slot="icon-only" color="danger" name="location"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+
+
+
+
+            <ion-button expand="full" (click)="guardar(); modal.dismiss()">
+              Guardar
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
 
 </ion-content>

@@ -4,6 +4,7 @@ import { GooglemapsComponent } from 'src/app/components/googlemaps/googlemaps.co
 import { ConfirmService } from 'src/app/services/confirm.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { cliente, equipoI, Estudiante, Resultado, ResultadoI, SitiosTuristicos, TipoDeSitios } from '../../models/models';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -43,9 +44,12 @@ export class HomePage {
 
 
   constructor(
+    private animationCtrl: AnimationController,
     private modalController: ModalController,
     private database: FirestoreService,
     private interaction: ConfirmService) { }
+
+
 
   //resultado: number = 0;
   // mensaje: string = "hola eduardp como estas ";
@@ -99,6 +103,35 @@ export class HomePage {
       id: this.database.getId()
     }
   }
+
+
+  enterAnimation = (baseEl: HTMLElement) => {
+    const root = baseEl.shadowRoot;
+
+    const backdropAnimation = this.animationCtrl
+      .create()
+      .addElement(root.querySelector('ion-backdrop')!)
+      .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+
+    const wrapperAnimation = this.animationCtrl
+      .create()
+      .addElement(root.querySelector('.modal-wrapper')!)
+      .keyframes([
+        { offset: 0, opacity: '0', transform: 'scale(0)' },
+        { offset: 1, opacity: '0.99', transform: 'scale(1)' },
+      ]);
+
+    return this.animationCtrl
+      .create()
+      .addElement(baseEl)
+      .easing('ease-out')
+      .duration(500)
+      .addAnimation([backdropAnimation, wrapperAnimation]);
+  };
+
+  leaveAnimation = (baseEl: HTMLElement) => {
+    return this.enterAnimation(baseEl).direction('reverse');
+  };
 
   loadProductos() {
     const path = 'SitiosTuristicos';
