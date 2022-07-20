@@ -13,4 +13,5 @@ En la carpeta environments se debe agregar las credenciales de firebase  como la
     messagingSenderId: '',
   },
 
+- Direccion del video : https://www.youtube.com/watch?v=OzP7wpcC9VE
   
