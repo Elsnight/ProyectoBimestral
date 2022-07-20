@@ -1,9 +1,9 @@
 # ProyectoBimestral
 
 En la carpeta environments se debe agregar las credenciales de firebase  como la de google maps
-- ApiKeyGoogleMaps: '*********',
+- ApiKeyGoogleMaps: ' ********* ',
 
--firebaseConfig: {
+- firebaseConfig: {
     projectId: '',
     appId: '',
     storageBucket: '',
@@ -12,3 +12,5 @@ En la carpeta environments se debe agregar las credenciales de firebase  como la
     authDomain: '',
     messagingSenderId: '',
   },
+
+  
