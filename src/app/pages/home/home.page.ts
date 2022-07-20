@@ -173,8 +173,8 @@ export class HomePage {
     console.log('esta una ubicaicon', ubicacion);
 
     let positionInput = {
-      lat: -2.898116,
-      lng: -78.99958149999999
+      lat: -0.2187979,
+      lng: -78.5122329
     };
     if (ubicacion !== null) {
       positionInput = ubicacion;
